@@ -5,8 +5,8 @@ import { Menu, Search, X } from "lucide-react";
 import { cn } from "@/libs/utils";
 import { entranceAnimations } from "@/libs/animations/entranceAnimation";
 import { hoverAnimations } from "@/libs/animations/hoverAnimation";
-import gsap from "gsap";
-import { Button } from "../Button";
+// import gsap from "gsap";
+// import { Button } from "../Button";
 
 const navbarVariants = cva(
   "relative w-full flex items-center justify-between px-6 py-4 rounded-md border transition-all",
