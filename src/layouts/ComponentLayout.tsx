@@ -6,7 +6,6 @@ type Props = {};
 
 const ComponentLayout = ({}: Props) => {
   const location = useLocation();
-  console.log(location);
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -22,16 +21,23 @@ const ComponentLayout = ({}: Props) => {
   ];
 
   return (
-    <div className="flex min-h-screen text-gray-900">
+    <div
+      className="flex min-h-screen transition-colors duration-250"
+      style={{ color: "var(--text-color)" }}
+    >
       <aside
         className={`
           w-64 p-6 flex flex-col
-          border-r border-gray-200
+          border-r
           fixed md:static top-0 left-0 h-full z-20
           transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
-          transition-transform duration-300 ease-in-out
+          transition-all duration-300 ease-in-out
           md:translate-x-0
         `}
+        style={{
+          backgroundColor: "var(--bg-color)",
+          borderColor: "var(--preview-border)",
+        }}
       >
         <h2 className="text-md font-bold mb-6">Components</h2>
         <ul className="flex flex-col gap-2">
@@ -39,10 +45,10 @@ const ComponentLayout = ({}: Props) => {
             <li
               onClick={() => navigate(item.toLowerCase())}
               key={item}
-              className={`cursor-pointer hover:text-black text-md hover:translate-x-1 transition-all duration-200 ease-in-out ${
+              className={`cursor-pointer text-md hover:translate-x-1 transition-all duration-200 ease-in-out ${
                 location.pathname === `/components/${item.toLowerCase()}`
-                  ? "text-black"
-                  : "text-gray-400"
+                  ? "font-semibold opacity-100"
+                  : "opacity-50 hover:opacity-100"
               }`}
             >
               {item}
@@ -53,7 +59,7 @@ const ComponentLayout = ({}: Props) => {
 
       <div className="flex-1 ml-10 overflow-auto h-screen p-6">
         <button
-          className="md:hidden mb-4 text-gray-700"
+          className="md:hidden mb-4 opacity-70 hover:opacity-100 transition-opacity"
           onClick={() => setSidebarOpen(!sidebarOpen)}
         >
           <Menu size={24} />

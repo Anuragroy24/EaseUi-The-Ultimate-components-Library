@@ -19,6 +19,7 @@ const themeSlice = createSlice({
     },
     setTheme: (state, action) => {
       state.mode = action.payload;
+      localStorage.setItem("theme", action.payload);
       document.documentElement.setAttribute("data-theme", action.payload);
     },
   },
